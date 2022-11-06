@@ -84,7 +84,7 @@ async def on_voice_state_update(member, before, after):
                     user[str(id)] = int(join_time)
                 with open("time_data.json","w") as f:
                     json.dump(user, f, indent=4)   
-                channel = bot.get_channel(1014511314103697458)
+                channel = bot.get_channel() #Add VC Rank Logging Channel ID Here 
     elif before.channel is not None and before.channel.id in vcList: 
         if before.channel is not None and after.channel is None:
             leave_time = time.time()
@@ -100,7 +100,7 @@ async def on_voice_state_update(member, before, after):
                     file[str(id)]["level"] = int(file[str(id)]["xp"] ** (1/3))
                 with open("data.json", "w") as f:
                     json.dump(file, f, indent=4)
-                channel = bot.get_channel(1014511314103697458)
+                channel = bot.get_channel() #Add VC Rank Logging Channel ID Here
                 await channel.send(f"```{member} spent {time_spent}s in VC | {points}XP Added```")   
                 
 bot.run("TOKEN") #Bot token here
